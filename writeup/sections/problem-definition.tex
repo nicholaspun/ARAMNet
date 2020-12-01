@@ -1,0 +1,50 @@
+\section{Problem Definition}\label{Sec:Problem-Definition}
+
+In this section, we will present a generalization of the problem described in \Cref{Section:Motivation} and also refine the questions we want to answer in this paper.
+
+Let $\U = \{u_1, \ldots, u_n\}$ be the universal pool of $n$ elements and $\U_1, \ldots \U_m \subseteq \U$ be the individual pools for Players $P_1$ through $P_m$ respectively.
+Let $\sigma: [m] \longrightarrow [m]$ be an ordering of the $m$ players.
+(So, $P_{\sigma(1)}$ is the player that goes first, $P_{\sigma(2)}$ second and so forth)
+Suppose the $m$ players pick from $\U$ using the following scheme:
+
+\IncMargin{2em}
+\begin{algorithm}[H]
+    \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+    
+    \BlankLine
+    \Input{Universal pool $\U$, player pools $\U_1, \ldots, \U$, and player ordering $\sigma$}
+    \Output{An assignment of $P_1, \ldots, P_m$ to unique elements $u_{P_1}, \ldots, u_{P_m}$}
+    \BlankLine
+
+    $\U_{\mathtt{curr}} \leftarrow \U$
+
+    \For{$i \leftarrow 1$ \KwTo $m$}{
+        Select an element $u_j$ (uniformly at random) from $\U_{P_{\sigma(i)}} - \U_{\mathtt{curr}}$ and assign it to $P_{\sigma(i)}$
+        
+        $\U_{\mathtt{curr}} \leftarrow \U_{\mathtt{curr}} - \{u_j\}$
+    }
+\end{algorithm}
+\DecMargin{2em}
+
+We've already seen that changing the order of the players has an impact on the individual probability distributions.
+(We will also show this more carefully in \Cref{Section:Mathematical-Approach})
+Since we're ultimately playing a game, it's natural to want an ordering that maximizes fairness.
+That is, we want an ordering of players such that the probability for player $P_i$ to select element $u \in \U_i$ is \it{close to} uniform $\left(\frac{1}{|\U_i|}\right)$.
+By \it{close to}, we mean that the following metric should be minimized:
+
+\begin{definition}[Hellinger Distance\footnote{See \url{http://encyclopediaofmath.org/index.php?title=Hellinger_distance&oldid=47206}}]
+    Let $P = (p_1, \ldots, p_k)$, $Q = (q_1, \ldots, q_k)$ be two discrete probability distributions, their \it{Hellinger distance} is defined as:
+    \[
+        H(P, Q) = \frac{1}{\sqrt{2}}\sqrt{\sum_{i = 1}^k (\sqrt{p_i} - \sqrt{q_i})^2}
+    \]
+\end{definition}
+\begin{remark}
+    $0 \leq H(P,Q) \leq 1$ 
+\end{remark}
+
+Unfortunately, the question doesn't seem to yield a simple answer and so, while it will drive the research below, we may not see it answered by the end of paper.
+Instead, we fall back to a simpler question and end up comparing two candidate orderings: the random ordering and the ``greedy'' ordering.
+
+In \Cref{Section:Mathematical-Approach}, we will solve the two-player case and see why a greedy approach is a candidate solution.
+We will also see why the general case is difficult to handle, leading to the idea of developing empirical evidence, which will be explored in \Cref{Section:Empirical-Approach}.
+Finally, we will leave some possible directions to further this research in \Cref{Section:Outlook}

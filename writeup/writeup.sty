@@ -1,0 +1,74 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{writeup}[2020/08/19 writeup]
+
+% Packages
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{lmodern}
+\RequirePackage{graphicx}
+\RequirePackage{amsmath, amssymb, amsthm}
+\RequirePackage{mathtools}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage[margin=1in]{geometry}
+\RequirePackage{enumitem}
+\RequirePackage{parskip}
+\RequirePackage[linesnumbered, lined, boxed]{algorithm2e}
+\RequirePackage{cleveref}
+\RequirePackage{tocloft}
+\RequirePackage[titletoc]{appendix}
+\RequirePackage{mathrsfs}
+\RequirePackage{tikz}
+\RequirePackage{makecell}
+
+% Make own title
+\makeatletter
+\renewcommand{\maketitle}{
+    \begin{center}
+        {\Large\bf \@title} \\
+        \vspace{3mm}
+        {\@author}
+    \end{center}
+}
+\makeatother
+
+% Page numbering
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\cfoot{}
+\rfoot{{\small Page \thepage\ /\ \pageref*{LastPage}}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% -- Tikz Options -- %
+\usetikzlibrary{shapes, positioning}
+\tikzset{vertex/.style = {shape=circle, draw, thick}}
+\tikzset{edge/.style = {->, > = stealth, shorten > = 1pt, thick}}
+
+% Aliases
+\renewcommand{\it}{\textit}
+\renewcommand{\bf}{\textbf}
+\renewcommand{\tt}{\texttt}
+\newcommand{\ul}{\underline}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\C}{\mathcal{C}}
+
+% ToC
+\renewcommand{\cfttoctitlefont}{\normalfont\Large}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftsecpagefont}{\normalfont}
+
+% Theorems
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem*{remark}{Remark}
+
+% Cleverref
+\AtBeginEnvironment{appendices}{\crefalias{section}{appendix}}

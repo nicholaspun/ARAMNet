@@ -1,0 +1,34 @@
+\documentclass[11pt]{article}    
+
+\usepackage{writeup}
+
+\title{Greed is Feed: An Attempt to Find a Fair Selection Scheme Amidst Inequality}
+\author{Nicholas Pun}
+
+\begin{document}
+\maketitle
+
+\vspace{3mm}
+\begin{center}
+    \parbox{0.85\textwidth}{%
+    \it{Abstract.}
+    Suppose $m$ players select from a pool $\U$ of $n$ elements without replacement and with the additional restriction that their selections are limited to subsets $\U_1, \ldots, \U_m \subseteq \U$, respectively.
+    When the $U_i$'s only partially intersect, a prior player's selection may not affect all the players coming after them.
+    Further, by changing the order that the $m$ players draw from the pool, we may increase or decrease the probability of an element being chosen once it reaches a later player.
+    What ordering will yield the most uniform probabilities for every player?
+    In this paper, we answer this for the $2$-player case and show that being ``greedy'' in our ordering may not yield optimal results for a very specific instance of a $10$-person case through empirical results.}
+\end{center}
+\vspace{5mm}
+
+{\small \tableofcontents}
+
+\input{sections/motivation.tex}
+\input{sections/problem-definition.tex}
+\input{sections/mathematical/mathmatical.tex}
+\input{sections/empirical/empirical.tex}
+\input{sections/outlook.tex}
+
+\clearpage
+\input{sections/appendix/appendix.tex}
+
+\end{document}

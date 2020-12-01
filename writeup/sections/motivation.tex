@@ -1,0 +1,21 @@
+\section{Motivation}\label{Section:Motivation}
+
+The idea for this problem came from the All Random, All Mid (ARAM) game mode in popular multiplayer online game \it{League of Legends}\footnote{https://na.leagueoflegends.com/en-us/}.
+In this game mode, two teams of $5$ are randomly given characters (known as champions) to battle against each other and take out the opponent's home base first.
+There are several rules in play when players randomly select their champions:
+\begin{itemize}
+    \item There is a universal pool of $152$ champions\footnote{As of October 29th, 2020} to select from and selections occur without replacement 
+    \item Players don't immediately have access to the entire pool and must purchase additional champions to increase their personal pool. This will result in different players having access to different subsets of the universal pool.
+    \item There are always 14 champions that are \it{``free-to-play''} or accessible to all $10$ players. (This prevents the case where a player runs out of champions to select from their pool)
+    \item Players line-up in some order to make their selections
+\end{itemize}
+The last rule makes for an interesting probabilistic concern since a prior player's selection may only affect a fraction of the players after them (since some players may not have access to that champion in their personal pool).
+This differs from the case where everyone has access to the universal pool and are uniformly affected by a prior player's selection.
+As such, we might expect that as we change the ordering of the players, their individual probabilities of selecting a particular champion will change as well.
+
+To see this concretely, let's consider the scenario where there are only 2 players.
+Player A has access to only 2 champions from the universal pool while Player B has access to the entire universal pool.
+If Player A goes first, regardless of the champion that is selected, Player B will have less champions to choose from.
+However, if Player B goes first, there is a probability that they select a champion that is inaccessible to Player A.
+As such, Player A's pool will be unaffected when it comes to their turn to choose.
+We will delve more into this example in \Cref{Section:Two-Player}.

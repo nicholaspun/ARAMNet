@@ -1,0 +1,35 @@
+\subsection{Analyzing the Three-Player Game and Beyond}
+
+The two-player case is fairly straightforward since we reduced it to two real cases.
+However, as we move on to the more general case, we will find that the number of cases blow up exponentially.
+For example, with 3 players, we may see the following complex intersections:
+
+\begin{minipage}{\textwidth}
+    \centering
+    \begin{tikzpicture}
+        \node[vertex, minimum size=2cm] (a) at (0,0) {};
+        \node[vertex, minimum size=2cm] (b) at (1,0) {};
+        \node[vertex, minimum size=2cm] (c) at (0.5,1) {};
+
+        \node[vertex, minimum size=2cm] (a) at (4,0) {};
+        \node[vertex, minimum size=1cm] (b) at (4,0) {};
+        \node[vertex, minimum size=2cm] (c) at (5,0) {};
+
+        \node[vertex, minimum size=2cm] (a) at (8,0) {};
+        \node[vertex, minimum size=2cm] (b) at (8.8,0) {};
+        \node[vertex, minimum size=2cm] (c) at (9.6,0) {};
+    \end{tikzpicture}
+\end{minipage}
+
+As such, our approach of trying to break down the probabilities using law of total probability quickly becomes unwieldy.
+
+There were attempts to model this as a sort-of stochastic process.
+However, such a model would require memory of arbitrary length since we can always create arbitrarily far dependencies.
+For example, we can consider a game where only two players have an element $x$ in their pools, but the ordering places them first and last.
+This makes it seem difficult to model (most techniques only care about the previous state or a history of finite length), however, we admit here that the author also has limited knowledge in probability theory.
+
+Nevertheless, we work with the intuition that we built when analyzing the two-player case.
+In particular, we want to get a better handle on the idea that a greedy approach may yield the best ordering.
+Intuitively speaking, by using a greedy approach, at each step we maximize the probability of making independent selections.
+As such, it feels like this will bring us towards a solution most close to uniform.
+In the next section, we will continue down this line of thought by trying to find empirical evidence of our conjecture.

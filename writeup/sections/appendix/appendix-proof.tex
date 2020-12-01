@@ -1,0 +1,51 @@
+\section{Proof of \Cref{prop:two-player-second-case}}\label{Appendix:Proof-Of-Two-Player-Prop}
+
+Recall the statement of our proposition: \it{If $\U_1 \setminus \U_2 \neq \emptyset$ and $|\U_1| < |\U_2|$, then $P_2$ should go first.}
+
+Let:
+\begin{itemize}
+    \item $\C = \U_1 \cap \U_2 = \{c_1, \ldots, c_x\}$. We will index elements of $\C$ with $u$ (that is, $1 \leq u \leq x$ where possible)
+    \item $\U_1 = \{a_1, \ldots, a_y\} \cup \C$. We will index elements of $\U_1$ with $v$ (so $1 \leq v \leq y$)
+    \item $\U_2 = \{b_1, \ldots, b_z\} \cup \C$. We will index elements of $\U_2$ with $w$ (so $1 \leq w \leq z$)
+\end{itemize}
+
+By assumption, $y < z$.
+
+\ul{$P_2$ goes first}:
+
+\begin{equation*}
+    \Pr(P_2 \text{ selects } b_w) = \Pr(P_2 \text{ selects } c_u) = \frac{1}{x + z} \quad \forall u, w
+\end{equation*}
+
+For $P_1$, we solve $\Pr(P_1 \text{ selects } a_v)$ and $\Pr(P_1 \text{ selects } c_u)$ separately:
+\begin{align*}
+    \Pr(P_1 \text{ selects } a_v) 
+    &= \sum_w \Pr(P_1 \text{ selects } a_v \ \vert \ P_2 \text{ selects } b_w)\Pr(P_2 \text{ selects } b_w) \\
+    &\quad +\sum_u \Pr(P_1 \text{ selects } a_v \ \vert \ P_2 \text{ selects } c_u)\Pr(P_2 \text{ selects } c_u) \\
+    &= \sum_w \frac{1}{(x+y)(x+z)} + \sum_u \frac{1}{(x+y-1)(x+z)} \\
+    &= \frac{z}{(x+y)(x+z)} + \frac{x}{(x+y-1)(x+z)} \quad \forall v
+\end{align*}
+\begin{align*}
+    \Pr(P_1 \text{ selects } c_u) 
+    &= \sum_w \Pr(P_1 \text{ selects } c_u \ \vert \ P_2 \text{ selects } b_w)\Pr(P_2 \text{ selects } b_w) \\
+    &\quad +\sum_{k \neq u} \Pr(P_1 \text{ selects } c_u \ \vert \ P_2 \text{ selects } c_k)\Pr(P_2 \text{ selects } c_k) \\
+    &= \sum_w \frac{1}{(x+y)(x+z)} + \sum_{k \neq u} \frac{1}{(x+y-1)(x+z)} \\
+    &= \frac{z}{(x+y)(x+z)} + \frac{x-1}{(x+y-1)(x+z)} \quad \forall u
+\end{align*}
+Similarly, when \ul{$P_1$ goes first}:
+\begin{align*}
+    \Pr(P_1 \text{ selects } a_v) &= \Pr(P_1 \text{ selects } c_u) = \frac{1}{x + y} \quad \forall v, w \\
+    \Pr(P_2 \text{ selects } b_w) &= \frac{y}{(x+y)(x+z)} + \frac{x}{(x+y)(x+z-1)} \quad \forall w \\
+    \Pr(P_2 \text{ selects } c_u) &= \frac{y}{(x+y)(x+z)} + \frac{x-1}{(x+y)(x+z-1)} \quad \forall u
+\end{align*}
+In both cases, the player that goes first is granted a uniform distribution over their choices.
+So, only the distribution of the 2nd player diverges from uniform.
+We show that when $P_2$ goes first, the distance between the induced distribution for $P_1$ is closer to uniform than $P_2$'s induced distribution when $P_1$ goes first.
+
+The Hellinger distance between $P_1$'s induced distribution (when $P_2$ goes first) and the uniform distribution is:
+\begin{multline*}
+    \sum_v \left(\sqrt{\frac{1}{x+y}} - \sqrt{\frac{z}{(x+y)(x+z)} + \frac{x}{(x+y-1)(x+z)}}\right)^2 \\ 
+    + \sum_u \left(\sqrt{\frac{1}{x+y}} - \sqrt{\frac{z}{(x+y)(x+z)} + \frac{x-1}{(x+y-1)(x+z)}}\right)^2
+\end{multline*}
+A similar monstrosity can be produced for $P_2$'s induced distribution (when $P_1$ goes first).
+The proof completes by showing the difference between the two is less than $0$ which is a routine exercise of applying the assumption that $y < z$ (the inequality $\frac{1}{(z-1)y} < \frac{1}{z(y-1)}$, which is a direct consequence of $y < z$ will also be handy) repeatedly.

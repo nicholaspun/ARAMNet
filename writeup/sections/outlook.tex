@@ -1,0 +1,12 @@
+\section{Conclusions and Outlook}\label{Section:Outlook}
+We began with the very general question ``What is the best ordering for our players?''.
+In completing the proof that the greedy ordering works best when there are two players, we got stuck trying to carry forward our techniques on the cases with more players.
+As such, we set out to find empirical evidence that perhaps the greedy ordering is optimal for more than two players as well.
+In doing so, we find that simulating this game takes an extremely long time, and as a result, created a neural network that would handle the simulations.
+With that said and done, we find empirical evidence suggesting the opposite of what we set out to show: the greedy ordering is \it{not} optimal (at least for our restricted case of $152$ elements and $10$ players).
+This leaves us with one last follow-up question: if the greedy ordering isn't the best ordering, what other mechanisms are at play that will determine the best ordering?
+
+Overall, we've built some useful tools to perform empirical analysis on this problem.
+In particular, the network can always be tweaked to accept different instances of our problem.
+This is also the weakness of our tool as it lacks generality.
+Indeed, we still lack a good grasp of the mathematics behind our problem and future research should focus on this aspect.
