@@ -30,8 +30,8 @@ As such Network 5 (\Cref{Figure:Network-5}) does exactly this and perform additi
             Softmax          &              & (10, 152)    &           \\ 
             \hline
         \end{tabular}
-        \label{Table:Network-2}
         \caption{Network 2 Architecture (We omit the BatchNorm layer and Dropout layers between the individual LSTM layers)}
+        \label{Table:Network-2}
     \end{minipage}\hfill
     \begin{minipage}{.49\textwidth}
         \centering
@@ -50,8 +50,8 @@ As such Network 5 (\Cref{Figure:Network-5}) does exactly this and perform additi
             Softmax           &              & (10, 152)    &             \\ 
             \hline
         \end{tabular}
-        \label{Table:Network-3}
         \caption{Network 3 Architecture (We omit the BatchNorm, Dropout and Activation layers between each Linear layer)}
+        \label{Table:Network-3}
     \end{minipage}
 \end{table}
 
@@ -69,8 +69,8 @@ As such Network 5 (\Cref{Figure:Network-5}) does exactly this and perform additi
         \draw[edge] (3) to (s);
         \draw[edge] (s) to (out);
     \end{tikzpicture}
-    \label{Figure:Network-4}
     \caption{Network 4 Architecture Diagram}
+    \label{Figure:Network-4}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -93,8 +93,8 @@ As such Network 5 (\Cref{Figure:Network-5}) does exactly this and perform additi
         \draw[edge] (4) to (s);
         \draw[edge] (s) to (out);
     \end{tikzpicture}
-    \label{Figure:Network-5}
     \caption{Network 5 Architecture Diagram}
+    \label{Figure:Network-5}
 \end{figure}
 
 We trained the 4 networks on our small validation dataset of $300$ randomly generated samples, using the default settings for Adam and a batch size of 32, and plotted their learning curves alongside ARAMNet in \Cref{Figure:Training-Loss-All-Networks}.
@@ -114,12 +114,12 @@ It is, in fact, learning something interesting about the data and not just memor
         \includegraphics[width=.49\textwidth]{figures/explore-val-loss/network-4.png}\hfill
         \includegraphics[width=.49\textwidth]{figures/explore-val-loss/network-5.png}
     \end{minipage}
-    \label{Figure:Training-Loss-All-Networks}
     \caption{Learning Curve of the 4 alternate networks compared to the learning curve of ARAMNet on the validation dataset}
+    \label{Figure:Training-Loss-All-Networks}
 \end{figure}
 
 However, these two networks were more difficult to train and we had trouble preventing them from overfitting.
-Although they could reach training losses matching that of ARAMNet, their validation loss were much too high for them to be useful simulator replacement candidates
+Although they could reach training losses matching that of ARAMNet, their validation loss were much too high for them to be useful simulator replacement candidates.
 In \Cref{Figure:Training-Loss-2-and-5}, we can see just how large the training-to-validation loss gap is, as compared to \Cref{Figure:ARAMNet-Learning-Curve}.
 
 \begin{figure}
@@ -128,6 +128,6 @@ In \Cref{Figure:Training-Loss-2-and-5}, we can see just how large the training-t
         \includegraphics[width=.49\textwidth]{figures/explore-train-loss/network-2.png}\hfill
         \includegraphics[width=.49\textwidth]{figures/explore-train-loss/network-5.png}
     \end{minipage}
-    \label{Figure:Training-Loss-2-and-5}
     \caption{Learning curves for Networks 2 and 5 when we trained using the same optimizer and settings as with ARAMNet.}
+    \label{Figure:Training-Loss-2-and-5}
 \end{figure}
